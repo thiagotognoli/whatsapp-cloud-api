@@ -16,6 +16,13 @@ const expectSendMessageResult = (result: any): void => {
   expect(typeof result.whatsappId).toBe('string');
 };
 
+const expectSendStatusResult = (result: any): void => {
+  expect(result && typeof result === 'object').toBe(true);
+  expect(result).toHaveProperty('success');
+  expect(typeof result.success).toBe('boolean');
+  expect(result.success).toBe(false);
+};
+
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).
  * https://stackoverflow.com/a/1527820
@@ -39,6 +46,12 @@ const {
 
 describe('send functions', () => {
   const bot = createBot(fromPhoneNumberId, accessToken, { version });
+
+  test('sends status', async () => {
+    const result = await bot.sendStatus('wamid.abcde');
+
+    expectSendStatusResult(result);
+  });
 
   test('sends text', async () => {
     const result = await bot.sendText(to, 'Hello world', {

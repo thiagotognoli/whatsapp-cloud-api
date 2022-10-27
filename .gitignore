@@ -110,3 +110,5 @@ config/test.json
 src/config.json
 
 example/
+
+.history/*

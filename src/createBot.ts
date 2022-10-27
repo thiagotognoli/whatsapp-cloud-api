@@ -8,6 +8,8 @@ import {
 } from './messages.types';
 import { sendRequestHelper } from './sendRequestHelper';
 import { ExpressServer, startExpressServer } from './startExpressServer';
+import { sendStatusHelper } from './sendStatusHelper';
+import { Status } from './status.types';
 
 interface PaylodBase {
   messaging_product: 'whatsapp';
@@ -19,9 +21,20 @@ const payloadBase: PaylodBase = {
   recipient_type: 'individual',
 };
 
+interface StatusPaylodBase {
+  messaging_product: 'whatsapp';
+  status: 'read';
+}
+
+const statusPayloadBase: StatusPaylodBase = {
+  messaging_product: 'whatsapp',
+  status: 'read',
+};
+
 export const createBot: ICreateBot = (fromPhoneNumberId, accessToken, opts) => {
   let expressServer: ExpressServer;
   const sendRequest = sendRequestHelper(fromPhoneNumberId, accessToken, opts?.version);
+  const sendStatus = sendStatusHelper(fromPhoneNumberId, accessToken, opts?.version);
 
   const getMediaPayload = (urlOrObjectId: string, options?: MediaBase) => ({
     ...(isURL(urlOrObjectId) ? { link: urlOrObjectId } : { id: urlOrObjectId }),
@@ -41,6 +54,10 @@ export const createBot: ICreateBot = (fromPhoneNumberId, accessToken, opts) => {
       PubSub.subscribe(event, (_, data) => cb(data));
     },
 
+    sendStatus: (messageId) => sendStatus<Status>({
+      ...statusPayloadBase,
+      message_id: messageId,
+    }),
     sendText: (to, text, options) => sendRequest<TextMessage>({
       ...payloadBase,
       to,

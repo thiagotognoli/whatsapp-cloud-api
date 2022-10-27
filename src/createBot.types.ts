@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import { Server } from 'http';
 import { Contact, InteractiveHeader, TemplateComponent } from './messages.types';
 import { SendMessageResult } from './sendRequestHelper';
+import { SendStatusResult } from './sendStatusHelper';
 import { FreeFormObject } from './utils/misc';
 import { PubSubEvent } from './utils/pubSub';
 
@@ -24,6 +25,7 @@ export interface Bot {
   }) => Promise<{ server?: Server; app: Application; }>;
   on: (event: PubSubEvent, cb: (message: Message) => void) => void;
 
+  sendStatus: (messageId: string) => Promise<SendStatusResult>,
   sendText: (to: string, text: string, options?: {
     preview_url?: boolean;
   }) => Promise<SendMessageResult>;
