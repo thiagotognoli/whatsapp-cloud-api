@@ -115,7 +115,6 @@ export const startExpressServer = (
       return;
     }
     if (req.body?.entry?.[0]?.changes?.[0]?.value?.messages) {
-      console.log('messages_express');
       const {
         from,
         id,
