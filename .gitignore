@@ -80,7 +80,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist
 
 # Gatsby files
 .cache/
@@ -110,3 +110,4 @@ config/test.json
 src/config.json
 
 example/
+log.txt
