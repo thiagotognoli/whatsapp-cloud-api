@@ -2,6 +2,7 @@
   "buildOnSave": false,
   "compileOnSave": false,
   "compilerOptions": {
+      "outDir": "dist",
       "charset": "utf8",
       "module": "commonjs",
       "target": "es2018",
@@ -17,8 +18,8 @@
       "preserveConstEnums": true,
       "sourceMap": true,
       "esModuleInterop": true,
-      "outDir": "dist",
-      "noImplicitReturns": true
+      "noImplicitReturns": true,
+      "declaration": true
   },
   "include": [
     "src/**/*"
