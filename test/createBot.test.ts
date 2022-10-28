@@ -2,10 +2,10 @@ import fs from 'fs';
 import request from 'supertest';
 import { Server } from 'http';
 import { Application } from 'express';
-import { createBot, Message } from '.';
-import { FreeFormObject } from './utils/misc';
-import { PubSubEvents } from './utils/pubSub';
-import { Status } from './createBot.types';
+import { createBot, Message } from '../src';
+import { FreeFormObject } from '../src/utils/misc';
+import { PubSubEvents } from '../src/utils/pubSub';
+import { Status } from '../src/createBot.types';
 
 const expectSendMessageResult = (result: any): void => {
   expect(result && typeof result === 'object').toBe(true);

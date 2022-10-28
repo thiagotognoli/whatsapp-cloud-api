@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon",
     "build": "rm -rf dist && tsc",
-    "lint": "eslint --ext .ts ./",
+    "lint": "eslint --ext .ts ./src",
     "ts-check": "tsc --noEmit -p  .",
     "test": "npm run build && jest --testPathPattern=dist",
     "pre-commit-message": "echo 'Please wait, running pre-commit checks...' && exit 0",

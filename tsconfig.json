@@ -1,17 +1,29 @@
 {
-  "extends": "@tsconfig/node12/tsconfig.json",
+  "buildOnSave": false,
+  "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist",
-
-    "skipLibCheck": false,
-    "removeComments": true,
-    "sourceMap": true,
-    "declaration": true
+      "charset": "utf8",
+      "module": "commonjs",
+      "target": "es2018",
+      "lib": [
+          "es2018",
+          "dom"
+      ],
+      "noImplicitAny": true,
+      "removeComments": true,
+      "strictNullChecks": true,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "outDir": "dist",
+      "noImplicitReturns": true
   },
   "include": [
     "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
+  ],  
+  "typeRoots": [
+      "node_modules/@types"
   ]
 }
