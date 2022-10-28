@@ -12,7 +12,8 @@
     "pre-commit-message": "echo 'Please wait, running pre-commit checks...' && exit 0",
     "pre-commit-full": "npm-run-all lint ts-check test",
     "pre-commit": "npm-run-all lint ts-check",
-    "prepare": "[ -d './.husky' ] && husky install"
+    "git-prepare": "[ -d './.husky' ] && husky install",
+    "prepare": "npm-run-all build"
   },
   "files": [
     "dist",
