@@ -169,7 +169,7 @@ interface ParameterVideo {
 
 interface TemplateComponentTypeHeader {
   type: 'header';
-  parameters?: (
+  parameters: (
     ParameterImage | ParameterDocument | ParameterVideo
   )[];
 }
