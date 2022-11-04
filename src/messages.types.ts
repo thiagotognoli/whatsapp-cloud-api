@@ -133,7 +133,12 @@ export interface MediaBase {
   filename?: string;
 }
 
+export interface HeaderMediaBase {
+  filename?: string;
+}
+
 export type Media = MediaBase & (MediaWithId | MediaWithLink);
+export type HeaderMedia = HeaderMediaBase & (MediaWithId | MediaWithLink);
 
 interface ParameterText {
   type: 'text';
@@ -167,10 +172,25 @@ interface ParameterVideo {
   video: Media;
 }
 
+interface HeaderParameterImage {
+  type: 'image';
+  image: HeaderMedia;
+}
+
+interface HeaderParameterDocument {
+  type: 'document';
+  document: HeaderMedia;
+}
+
+interface HeaderParameterVideo {
+  type: 'video';
+  video: HeaderMedia;
+}
+
 interface TemplateComponentTypeHeader {
   type: 'header';
   parameters: (
-    ParameterImage | ParameterDocument | ParameterVideo
+    HeaderParameterImage | HeaderParameterDocument | HeaderParameterVideo
   )[];
 }
 
